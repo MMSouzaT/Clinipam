@@ -1,2 +1,4 @@
-Meu repositório Git ==================== 
-Apenas repositório Git
+Meu repositï¿½rio Git ==================== 
+Apenas repositï¿½rio Git
+
+AutomaÃ§Ã£o criada para a Clinipam

@@ -50,7 +50,7 @@ RSpec.configure do |config|
   config.include Capybara::DSL
 
   config.before(:example) do
-    page.current_window.resize_to(1200,800)
+    page.current_window.resize_to(1366,768)
   end
 # The settings below are suggested to provide a good initial experience
 # with RSpec, but feel free to customize to your heart's content.
@@ -117,7 +117,7 @@ end
 
 Capybara.configure do |config|
   #config.default_driver = :selenium_chrome
-  config.default_driver = :selenium_chrome_headless # esse headless é para caso eu queira fazer os testes sem ver o navegador
+  config.default_driver = :selenium_chrome#_headless # esse headless é para caso eu queira fazer os testes sem ver o navegador
   config.default_max_wait_time = 15 # isso aqui defini como tempo máximo de espera do capybara seja 5 segundos
   #dessa forma resolve o problema do upload de imagem que demora um pouco sem precisar usar o sleep que é pouco funcional
   config.app_host = 'http://172.16.0.248:8101'

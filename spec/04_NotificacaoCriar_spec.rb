@@ -10,7 +10,7 @@ describe 'Notificação', :notifC do
         fill_in 'matricula', with: 'MMEDICO'
         fill_in 'senha', with: '123456'
         click_on 'ACESSAR'
-        expect(page.title).to eql 'Clinipam - Área Administrativa'
+        
         #Navegando no menu lateral
         find('.icon-open').click
         find('div ul li a', text: 'NOTIFICAÇÕES').click
@@ -35,7 +35,7 @@ describe 'Notificação', :notifC do
         #Hora Agendamento
         erroHour = find('.toast-message')
         expect(erroHour).to have_content 'O campo Hora de Agendamento é obrigatório!'
-        fill_in 'send_hour', with: '11:29'
+        fill_in 'send_hour', with: '06:00'
         #Adicionando imagem, arquivo e link externo
         attach_file('fileImage', @imagem, make_visible: true)
         attach_file('filePdf', @arquivo,  make_visible: true)
@@ -50,12 +50,12 @@ describe 'Notificação', :notifC do
         #pegando erro do horario anterior ao agendado
         #Modificar a data sempre aqui
         erroDataAnterior = find('.toast-message')
-        expect(erroDataAnterior).to have_content 'Não é possível salvar uma notificação com uma data de agendamento menor do que a atual.'
-        fill_in 'send_date', with: '08/08/2020'
+        expect(erroDataAnterior).to have_content 'Não é possível salvar uma notificação com uma data/hora de agendamento menor do que a atual.'
+        fill_in 'send_date', with: '31/12/2020'
         find('.btn-padrao', text: 'ADICIONAR USUÁRIO(S)').click
         erroHoraAnterior = find('.toast-message')
-        expect(erroHoraAnterior).to have_content 'Não é possível salvar uma notificação com uma data de agendamento menor do que a atual.'
-        fill_in 'send_hour', with: '11:59'
+        expect(erroHoraAnterior).to have_content 'Não é possível salvar uma notificação com uma data/hora de agendamento menor do que a atual.'
+        fill_in 'send_hour', with: '23:59'
         find('.btn-padrao', text: 'ADICIONAR USUÁRIO(S)').click
         criacaoSucesso = find('.toast-message')
         expect(criacaoSucesso).to have_content 'Cadastro realizado com sucesso'
@@ -65,7 +65,7 @@ describe 'Notificação', :notifC do
         select('BA', from: 'filtroEstado')
         find('.btn-padrao', text: 'BUSCAR USUÁRIOS').click
         #Filtrando e flegando a linha
-        pegandoLinha = find('table tbody tr', text: 'ALICE NATÁLIA BETINA CALDEIRA').check
+        pegandoLinha = find('table tbody tr', text: 'JOSEFA EMILY STELLA COSTA').check
         pegandoLinha = find('table tbody tr', text: 'CARLOS EDUARDO BENJAMIN VINICIUS DA LUZ').check
         find('.btn-padrao', text: 'ADICIONAR USUÁRIO(S)').click
         expect(criacaoSucesso).to have_content 'Usuário(s) adicionado(s) com sucesso.'
@@ -77,7 +77,7 @@ describe 'Notificação', :notifC do
         find('.btn-padrao', text: 'SIM').click
         delet = find('.toast-message')
         expect(delet).to have_content 'Usuário deletado com sucesso.'
-
+    
 
     end
 end

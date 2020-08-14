@@ -2,7 +2,7 @@ describe 'Login', :login do
 
     it 'login' do 
         visit "/login"
-        expect(page.title).to eql 'Clinipam - Área Administrativa'
+        
 
         click_on "ACESSAR"
         erroMatricula = find('.toast-message')
@@ -29,7 +29,7 @@ describe 'Login', :login do
         fill_in 'matricula', with: 'MMEDICO'
         fill_in 'senha', with: '123456'
         click_on 'ACESSAR'
-        expect(page.title).to eql 'Clinipam - Área Administrativa'
+        
 
         
     end
