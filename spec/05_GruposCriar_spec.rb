@@ -17,7 +17,8 @@ describe 'Grupos de Usuários', :gruposC do
         erroNomeDoGrupo = find('.toast-message')
         expect(erroNomeDoGrupo).to have_content 'O campo Nome do Grupo é obrigatório'
         #preenchendo campo
-        #fill_in 'newCampo', with: '01 - Grupo criado pelo Capybara'
+        fill_in 'nomeGrupo', with: '01 - Grupo criado pelo Capybara'
+        fill_in 'descricaoGrupo', with: 'Descrição preenchida pelo Capybara'
         find('.btn-padrao', text: 'SALVAR').click
         saveOk = find('.toast-message')
         expect(saveOk).to have_content 'Grupo criado com sucesso.'
