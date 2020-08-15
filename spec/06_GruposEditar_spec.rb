@@ -17,8 +17,6 @@ describe 'Grupos de Usuários', :gruposE do
         sleep 1
         #limpando campo
         fill_in 'nomeGrupo', with: ''
-        
-
         find('.btn-padrao', text: 'SALVAR').click
         #Captando erro título e preenchendo título
         erroNomeDoGrupo = find('.toast-message')

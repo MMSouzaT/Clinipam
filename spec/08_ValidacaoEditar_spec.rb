@@ -14,28 +14,29 @@ describe 'Validação de Acesso', :validE do
         fill_in 'filtroIdentificador', with: 'Identificador preenchido pelo Capybara'
         select('PACIENTE', from: 'filtroPerfil')
         select('Não', from: 'filtroPossuiUsuario')
-
-
+        click_button 'FILTRAR'
+        #Clicando em editar
+        find('.fa-edit').click
         sleep 1
+        #Limpando os campos
+        fill_in 'formNome', with: ''
+        fill_in 'formSenha', with: ''
+        select('Selecionar', from: 'formPerfil')
+
         find('.btn-padrao', text: 'SALVAR').click
         #captando erro nome e preenchendo
         erroNome = find('.toast-message')
         expect(erroNome).to have_content 'O campo Nome é obrigatório'
-        fill_in 'formNome', with: '01 Validação criada pelo Capybara'
-        find('.btn-padrao', text: 'SALVAR').click
-        #captando erro identificador e preenchendo
-        erroIdentificador = find('.toast-message')
-        expect(erroIdentificador).to have_content 'O campo Identificador é obrigatório'
-        fill_in 'formIndentificador', with: 'Identificador preenchido pelo Capybara'
+        fill_in 'formNome', with: '01 Validação editada pelo Capybara'
         find('.btn-padrao', text: 'SALVAR').click
         #Captando erro senha e preenchendo com senha inválida
         erroSenha = find('.toast-message')
-        expect(erroIdentificador).to have_content 'O campo Senha é obrigatório e precisa ter entre 6 a 20 caracteres.'
+        expect(erroSenha).to have_content 'O campo Senha é obrigatório e precisa ter entre 6 a 20 caracteres.'
         fill_in 'formSenha', with: '1234'
         find('.btn-padrao', text: 'SALVAR').click
         #Captando erro senha e preenchendo com senha válida
         erroSenha = find('.toast-message')
-        expect(erroIdentificador).to have_content 'O campo Senha é obrigatório e precisa ter entre 6 a 20 caracteres.'
+        expect(erroSenha).to have_content 'O campo Senha é obrigatório e precisa ter entre 6 a 20 caracteres.'
         fill_in 'formSenha', with: '1234567'
         find('.btn-padrao', text: 'SALVAR').click
         #Captando erro perfil de acesso e selecionando

@@ -25,12 +25,12 @@ describe 'Validação de Acesso', :validC do
         find('.btn-padrao', text: 'SALVAR').click
         #Captando erro senha e preenchendo com senha inválida
         erroSenha = find('.toast-message')
-        expect(erroIdentificador).to have_content 'O campo Senha é obrigatório e precisa ter entre 6 a 20 caracteres.'
+        expect(erroSenha).to have_content 'O campo Senha é obrigatório e precisa ter entre 6 a 20 caracteres.'
         fill_in 'formSenha', with: '1234'
         find('.btn-padrao', text: 'SALVAR').click
         #Captando erro senha e preenchendo com senha válida
         erroSenha = find('.toast-message')
-        expect(erroIdentificador).to have_content 'O campo Senha é obrigatório e precisa ter entre 6 a 20 caracteres.'
+        expect(erroSenha).to have_content 'O campo Senha é obrigatório e precisa ter entre 6 a 20 caracteres.'
         fill_in 'formSenha', with: '1234567'
         find('.btn-padrao', text: 'SALVAR').click
         #Captando erro perfil de acesso e selecionando
